@@ -73,6 +73,17 @@ aria-label = Add to saved recipes
 Show more
 
 
+
+#---------- RECIPE SLIDER ----------#
+
+Latest Asian Recipes
+
+Show more
+<span class="material-symbols-outlined" aria-hidden="true">navigate_next</span>
+
+Latest French Recipes
+
+
 #---------- TAG ----------#
 
 Choose your health preference.
