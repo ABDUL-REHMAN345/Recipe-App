@@ -1,5 +1,5 @@
 Cook.io - Cooking made easy.
-This is a recipe application made by codewithsadee
+This is a recipe application made by codewithrehman
 
 
 
@@ -199,7 +199,7 @@ Alcohol-Cocktail
 
 #---------- FOOTER ----------#
 
-Copyright 2023 codewithsadee
+Copyright 2023 codewithrehman
 
 alt = Cook.io
 
