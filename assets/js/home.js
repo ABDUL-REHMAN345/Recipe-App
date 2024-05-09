@@ -86,7 +86,7 @@ addEventOnElements($tabBtns, "keydown", function (e) {
 
 const addTabContent = ($currentTabBtn, $currentTabPanel) => {
   const /**{NodeElement} */ $gridList = document.createElement("div");
-  $gridList.classList.add("grid-List");
+  $gridList.classList.add("grid-list");
 
   $currentTabPanel.innerHTML = `
     
@@ -99,10 +99,9 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
   fetchData(
     [
       ["mealType", $currentTabBtn.textContent.trim().toLowerCase()],
-      ...cardQueries,
+      ...cardQueries
     ],
     function (data) {
-      console.log(data);
       $currentTabPanel.innerHTML = "";
       for (let i = 0; i < 12; i++) {
         const {
@@ -128,8 +127,7 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
 
 <div class="card-body">
   <h3 class="title-small">
-    <a ${title ?? "Untitled"}</a
-    >
+    <a href="./detail.html" class="card-link"> ${title ?? "Untitled"}</a>
   </h3>
   <div class="meta-wrapper">
     <div class="meta-item">
