@@ -12,6 +12,7 @@
 
 import { fetchData } from "./api.js";
 import { $skeletonCard, cardQueries } from "./global.js";
+import { getTime } from "./module.js";
 
 // Home Page Search
 
@@ -99,13 +100,19 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
   fetchData(
     [
       ["mealType", $currentTabBtn.textContent.trim().toLowerCase()],
-      ...cardQueries],
+      ...cardQueries,
+    ],
     function (data) {
       $currentTabPanel.innerHTML = "";
       for (let i = 0; i < 12; i++) {
         const {
           recipe: { image, label: title, totalTime: cookingTime, uri },
         } = data.hits[i];
+
+        const /**{string} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+        const /**{undefined || String} */ isSaved = window.localStorage.getItem(
+            `cookio-recipe${recipeId}`
+          );
 
         const /**{NodeElement} */ $card = document.createElement("div");
         $card.classList.add("card");
@@ -136,11 +143,13 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
         >schedule</span
       >
 
-      <span class="label-medium"> ${cookingTime || "<1"} minutes </span>
+      <span class="label-medium"> ${getTime(cookingTime).time || "<1"} ${
+          getTime(cookingTime).timeUnit
+        } </span>
     </div>
     <button
-      class="icon-btn has-state removed"
-      aria-label="Add to saved recipes"
+      class="icon-btn has-state ${isSaved ? "saved" : "removed"}"
+      aria-label="Add to saved recipes" onclick="saveRecipe(this, '${recipeId}')"
     >
       <span
         class="material-symbols-outlined bookmark-add"
@@ -166,7 +175,9 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
       $currentTabPanel.appendChild($gridList);
       $currentTabPanel.innerHTML += `
 <a
-href="./recipes.html"
+href="./recipes.html?mealType=${$currentTabBtn.textContent
+        .trim()
+        .toLowerCase()}"
 class="btn btn-secondary label-large has-state"
 >Show more</a
 >
@@ -177,3 +188,129 @@ class="btn btn-secondary label-large has-state"
   );
 };
 addTabContent($lastActiveTabBtn, $lastActiveTabPanel);
+
+/**
+ * Fetch data for Slider card
+ */
+
+let /**{Array} */ cuisineType = ["Asian", "French"];
+
+const /**{NodeList} */ $sliderSections = document.querySelectorAll(
+    "[data-slider-section]"
+  );
+
+for (const [index, $sliderSection] of $sliderSections.entries()) {
+  $sliderSection.innerHTML = `
+  
+  <div class="container">
+          <h2 class="section-title headline-small" id="slider-label-1">
+            Latest ${cuisineType[index]} Recipes
+          </h2>
+      
+
+
+          <div class="slider">
+          <ul class="slider-wrapper" data-slider-wrapper>${`<li class ="slider-item">${$skeletonCard}</li>`.repeat(
+            10
+          )}</ul>
+          </div>
+  `;
+
+const /**{NodeElement} */ $sliderWrapper = $sliderSection.querySelector("[data-slider-wrapper]");
+
+fetchData([...cardQueries,["cuisineType", cuisineType[index]]],function(data){
+  $sliderWrapper.innerHTML = "";
+
+data.hits.map(item=> {
+  const {
+recipe: {
+  image,
+  label: title,
+  totalTime:cookingTime,
+  uri
+}
+  } =item;
+
+  const /**{string} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+  const /**{undefined || String} */ isSaved = window.localStorage.getItem(
+      `cookio-recipe${recipeId}`
+    );
+
+    const /**{NodeElement} */ $sliderItem = document.createElement("li");
+    $sliderItem.classList.add("slider-item");
+    $sliderItem.innerHTML = `
+    
+    <div class="card">
+    <div class="card">
+<figure class="card-media img-holder">
+  <img
+    src="${image}"
+    width="195"
+    height="195"
+    loading="lazy"
+    alt="${title}"
+    class="img-cover"
+  />
+</figure>
+
+<div class="card-body">
+  <h3 class="title-small">
+    <a href="./detail.html" class="card-link"> ${title ?? "Untitled"}</a>
+  </h3>
+  <div class="meta-wrapper">
+    <div class="meta-item">
+      <span
+        class="material-symbols-outlined"
+        aria-hidden="true"
+        >schedule</span
+      >
+
+      <span class="label-medium"> ${getTime(cookingTime).time || "<1"} ${
+          getTime(cookingTime).timeUnit
+        } </span>
+    </div>
+    <button
+      class="icon-btn has-state ${isSaved ? "saved" : "removed"}"
+      aria-label="Add to saved recipes" onclick="saveRecipe(this, '${recipeId}')"
+    >
+      <span
+        class="material-symbols-outlined bookmark-add"
+        aria-hidden="true"
+        >bookmark_add</span
+      >
+
+      <span
+        class="material-symbols-outlined bookmark"
+        aria-hidden="true"
+        >bookmark</span
+      >
+    </button>
+  </div>
+</div>
+
+    
+    </div>
+    
+    
+    `;
+
+$sliderWrapper.appendChild($sliderItem);
+
+});
+
+$sliderWrapper.innerHTML += `
+
+<li class="slider-item" data-slider-item>
+                  <a href="./recipes.html?cusineType=${cuisineType[index].toLowerCase()}" class="load-more-card has-state">
+                    <span class="label-large">Show more </span>
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >navigate_next</span
+                    >
+                  </a>
+                </li>
+
+`;
+
+});
+
+}
