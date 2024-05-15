@@ -165,7 +165,6 @@ const renderRecipe = (data) => {
     const {
       recipe: { image, label: title, totalTime: cookingTime, uri },
     } = item;
-
     const /**{string} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
     const /**{undefined || String} */ isSaved = window.localStorage.getItem(
         `cookio-recipe${recipeId}`
@@ -192,7 +191,7 @@ const renderRecipe = (data) => {
   
   <div class="card-body">
     <h3 class="title-small">
-      <a href="./detail.html" class="card-link"> ${title ?? "Untitled"}</a>
+      <a href="./detail.html?recipe=${recipeId}" class="card-link"> ${title ?? "Untitled"}</a>
     </h3>
     <div class="meta-wrapper">
       <div class="meta-item">
