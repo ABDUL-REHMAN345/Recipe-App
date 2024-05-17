@@ -381,7 +381,8 @@ main {
 
 .grid-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); */
+  grid-template-columns: 1fr 1fr;
   gap: 12px 8px;
 }
 
@@ -1410,4 +1411,34 @@ main {
   /* 
   *CUSTOM PROPERTY
   */
+:root{
+
+/* 
+* TYPOGRAPHY 
+*/
+
+/*font-size  */
+--fs-display-large: 3.6rem;
+--fs-display-medium: 3.6rem;
+--fs-display-small: 3rem;
+}
+
+/* 
+* REUSED STYLE
+*/
+.container{
+  padding-inline: 32px;
+}
+.grid-list {
+  grid-template-columns:repeat(auto-fill, minmax(172px, 1fr));
+}
+.section-title{
+  margin-block-end: 24px;
+}
+.snackbar-container{
+  right: auto;
+  bottom: 32px;
+  left: 32px;
+  max-width: 360px;
+}
 }
