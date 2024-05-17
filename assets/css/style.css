@@ -1440,5 +1440,58 @@ main {
   bottom: 32px;
   left: 32px;
   max-width: 360px;
+  width: 100%;
 }
+
+/* 
+*TYPOGRAPHY
+*/
+.display-large,
+.display-medium{
+  line-height: 44px;
+}
+.display-small{
+  line-height: 36px;
+}
+.title-small{
+  font-size: 1.6rem;
+  font-weight: var(--weight-medium);
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+/* 
+* HERO
+*/
+
+.banner-card{
+  background-image: url(../images/hero-banner-medium.jpg);
+}
+/* .search-field{
+  height: 72px;
+}
+.search-wrapper .search-submit{
+width: 100px;
+} */
+
+.hero .search-wrapper{
+margin-block: 24px 16px;
+}
+
+
+/* 
+* TAB
+*/
+
+
+.tab .tab-list{
+margin-inline: 0;
+padding-inline: 0;
+}
+
+.tab .btn-secondary {
+  max-width: max-content;
+  margin-inline: auto;
+}
+
 }
