@@ -106,7 +106,9 @@ aria-hidden="true"
     $gridList.appendChild($card);
   });
 } else {
-  $savedRecipeContainer.innerHTML += html` <p class="body-large">
+  $savedRecipeContainer.innerHTML +=` <p class="body-large">
     You Don't Saved Any Recipes Yet!
   </p>`;
 }
+
+$savedRecipeContainer.appendChild($gridList);

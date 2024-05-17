@@ -1403,3 +1403,11 @@ main {
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
+
+/* Responsive For Larger Than 600px Screen */
+
+@media (min-width:600px) {
+  /* 
+  *CUSTOM PROPERTY
+  */
+}
