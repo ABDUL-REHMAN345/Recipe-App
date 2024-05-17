@@ -23,7 +23,7 @@ const /**{NodeElement} */ $detailContainer = document.querySelector("[data-detai
 ACCESS_POINT += `/${window.location.search.slice(window.location.search.indexOf("=") + 1)}`;
 
 fetchData(null, data => {
-    console.log(data);
+    // console.log(data);
 const {
 images: {LARGE, REGULAR, SMALL, THUMBNAIL},
 label: title,
