@@ -1437,7 +1437,7 @@ main {
 }
 .snackbar-container{
   right: auto;
-  bottom: 32px;
+  /* bottom: 32px; */
   left: 32px;
   max-width: 360px;
   width: 100%;
@@ -1494,4 +1494,224 @@ padding-inline: 0;
   margin-inline: auto;
 }
 
+/* 
+* RECIPE SLIDER
+*/
+
+.slider-item{
+  min-width: 206px;
 }
+
+/* 
+* TAG
+*/
+
+.tag .section-title{margin-block-end: 12px;}
+
+
+/* 
+* FOOTER
+*/
+
+.footer{
+  justify-content: space-between;
+  padding-inline: 32px;
+}
+
+/* 
+* FILTER BAR
+*/
+
+.filter-bar{
+  border-radius: var(--radius-8) 0 0 var(--radius-8);
+}
+
+
+/* 
+* DETAIL PAGE
+*/
+
+.detail-banner{max-width: 420px;}
+.detail-stats .stats-item{
+  padding-block: 20px;
+}
+
+}
+
+
+
+
+
+/* Responsive For Larger Than 768px Screen */
+
+@media (min-width:768px) {
+  /* 
+  * ReUSED STYLE
+  */
+:root{
+
+/* 
+* OTHERS 
+*/
+
+
+--header-height: 72px;
+--mobile-nav-height: 0px;
+}
+
+/* 
+* RESET
+*/
+.body{
+  padding-block-end: 0;
+}
+
+/* 
+* REUSED STYLE
+*/
+
+.snackbar-container{bottom: 32px;}
+
+
+
+/* 
+* HEADER
+*/
+.header{padding-inline: 32px;}
+
+.navbar,
+.header .btn-primary,
+.navbar-list {
+  display: flex;
+}
+
+.navbar{
+margin-inline-start: auto;}
+
+.navbar-link{
+  position: relative;
+  height: var(--header-height);
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  align-items: center;
+  padding-inline: 24px;
+  opacity: 0.9;
+}
+
+.navbar-link .active{opacity: 1;}
+
+.navbar-link.active::before{
+  content: "";
+  order: 1;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: var(--radius-pill) var(--radius-pill) 0 0;
+}
+
+
+
+/* 
+* MOBILE-NAV
+*/
+
+.mobile-nav{display: none;}
+
+
+/* 
+* FOOTER
+*/
+
+.footer .logo{
+  display: block;
+}
+
+
+}
+
+
+/* Responsive For Larger Than 992px Screen */
+
+@media (min-width:992px) {
+  /* 
+  * ReUSED STYLE
+  */
+:root{
+
+/* 
+* OTHERS 
+*/
+
+
+--header-height: 72px;
+--mobile-nav-height: 0px;
+}
+
+/* 
+* RESET
+*/
+.body{
+  padding-block-end: 0;
+}
+
+/* 
+* REUSED STYLE
+*/
+
+.snackbar-container{bottom: 32px;}
+
+
+
+/* 
+* HEADER
+*/
+.header{padding-inline: 32px;}
+
+.navbar,
+.header .btn-primary,
+.navbar-list {
+  display: flex;
+}
+
+.navbar{
+margin-inline-start: auto;}
+
+.navbar-link{
+  position: relative;
+  height: var(--header-height);
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  align-items: center;
+  padding-inline: 24px;
+  opacity: 0.9;
+}
+
+.navbar-link .active{opacity: 1;}
+
+.navbar-link.active::before{
+  content: "";
+  order: 1;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: var(--radius-pill) var(--radius-pill) 0 0;
+}
+
+
+
+/* 
+* MOBILE-NAV
+*/
+
+.mobile-nav{display: none;}
+
+
+/* 
+* FOOTER
+*/
+
+.footer .logo{
+  display: block;
+}
+
+
+}
+
