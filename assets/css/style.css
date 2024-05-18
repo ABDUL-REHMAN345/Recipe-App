@@ -1759,7 +1759,33 @@ margin-inline-start: auto;}
   display: none ;
 }
 
+/* 
+* DETAIL PAGE
+*/
 
+
+.detail-page-main{
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+.detail-page{
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  align-items: flex-start;
+  gap: 36px;
+}
+
+.detail-banner{
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  margin-block-start: 16px;
+  max-width: 100%;
+}
+
+.detail-stats .stats-item{
+  padding-block:24px;
+}
 
 }
 
