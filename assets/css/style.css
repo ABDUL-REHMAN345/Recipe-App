@@ -1467,12 +1467,12 @@ main {
 .banner-card{
   background-image: url(../images/hero-banner-medium.jpg);
 }
-/* .search-field{
+.search-field{
   height: 72px;
 }
 .search-wrapper .search-submit{
 width: 100px;
-} */
+}
 
 .hero .search-wrapper{
 margin-block: 24px 16px;
@@ -1566,6 +1566,7 @@ padding-inline: 0;
   padding-block-end: 0;
 }
 
+
 /* 
 * REUSED STYLE
 */
@@ -1621,9 +1622,9 @@ margin-inline-start: auto;}
 * FOOTER
 */
 
-.footer .logo{
+/* .footer .logo{
   display: block;
-}
+} */
 
 
 }
@@ -1785,7 +1786,27 @@ margin-inline-start: auto;}
 
 .detail-stats .stats-item{
   padding-block:24px;
+  gap: 8px;
 }
 
 }
 
+
+/* Responsive For Larger Than 1400px Screen */
+
+@media (min-width:1400px) {
+  /* 
+  * REUSED STYLE
+  */
+
+  .container{max-width: 1280px;}
+
+/* 
+* RECIPE SLIDER
+*/
+
+.slider-item{
+  min-width: calc(16.66% - 16.66px);
+}
+
+}
